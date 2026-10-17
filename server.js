@@ -29,7 +29,7 @@ app.use("/api", (req, res, next) => {
 // --- Claude helper ----------------------------------------------------
 async function askClaude(system, user, maxTokens = 1200) {
   if (!API_KEY) throw new Error("Server is missing GEMINI_API_KEY.");
-  const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${API_KEY}`, {
+  const r = await fetch(`https://aiplatform.googleapis.com/v1/publishers/google/models/${MODEL}:generateContent?key=${API_KEY}`, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
